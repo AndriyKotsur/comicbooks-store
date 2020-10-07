@@ -1,4 +1,6 @@
-const { modelNames } = require('mongoose');
+const {
+    modelNames
+} = require('mongoose');
 const product = require('../models/product');
 const {
     model
@@ -23,9 +25,9 @@ module.exports.getProducts = function (req, res) {
 module.exports.getProductById = function (req, res) {
     const productId = req.params.productId;
 
-    if(productId) {
+    if (productId) {
         Product.findById(productId, (err, product) => {
-            if(err) {
+            if (err) {
                 res.status(404).json({
                     message: 'Product has not been found'
                 })
@@ -48,8 +50,9 @@ module.exports.addProduct = function (req, res) {
         price,
         description
     } = req.body;
+    const image = req.file.location;
 
-    if (!title || !price || !description) {
+    if (!title || !price || !description || !image) {
         return res.status(400).json({
             message: "Please enter the required fields"
         })
@@ -57,7 +60,8 @@ module.exports.addProduct = function (req, res) {
     const newProduct = new Product({
         title: title,
         price: price,
-        description: description
+        description: description,
+        image: image
     })
     newProduct.save((err) => {
         if (err) {
@@ -73,23 +77,24 @@ module.exports.addProduct = function (req, res) {
 
 module.exports.editProduct = function (req, res) {
     const productId = req.body.productId;
-    if(productId) {
+    if (productId) {
         Product.findByIdAndUpdate(productId, {
-            title: req.body.title,
-            price: req.body.price,
-            description: req.body.description
-        },
-        (err, product) => {
-            if(err) {
-                res.status(404).json({
-                    message: 'Product has not been found'
-                })
-            } else {
-                res.status(200).json({
-                    message: 'Product has been changed'
-                })
-            }
-        })
+                title: req.body.title,
+                price: req.body.price,
+                description: req.body.description,
+                image: req.file.location
+            },
+            (err, product) => {
+                if (err) {
+                    res.status(404).json({
+                        message: 'Product has not been found'
+                    })
+                } else {
+                    res.status(200).json({
+                        message: 'Product has been changed'
+                    })
+                }
+            })
     } else {
         res.status(400).json({
             message: 'Bad request'
@@ -99,10 +104,10 @@ module.exports.editProduct = function (req, res) {
 
 module.exports.deleteProduct = function (req, res) {
     const productId = req.params.productId;
-    
-    if(productId) {
+
+    if (productId) {
         Product.findOneAndDelete(productId, (err, product) => {
-            if(err) {
+            if (err) {
                 res.status(404).json({
                     message: 'Product has not been found'
                 })

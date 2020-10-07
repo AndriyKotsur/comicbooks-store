@@ -18,6 +18,10 @@ const productSchema = new mongoose.Schema({
         trim: true,
         required: [true, 'Description is required'],
         minlength: [10, 'Minimun length is 10 characters for description']
+    },
+    image: {
+        type: String,
+        required: [true, 'Image is required']
     }
 }, {
     timestamps: true

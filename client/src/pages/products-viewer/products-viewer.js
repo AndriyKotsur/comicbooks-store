@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import ProductList from '../../components/product-list';
+import ProductList from '../../components/products-list';
 import axios from 'axios';
+import './products-viewer.css';
 
 class ProductsViewer extends Component {
     constructor(props) {
@@ -23,12 +24,14 @@ class ProductsViewer extends Component {
     };
 
     showInfo = (productId) => {
+        
         this.props.history.push(`/product/${productId}`)
     };
 
     render() { 
         const {products} = this.state;
-
+        console.log(products);
+        
         return ( 
             <React.Fragment>
                 <ProductList products={products} showInfo={this.showInfo} />
