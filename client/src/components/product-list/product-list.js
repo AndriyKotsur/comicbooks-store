@@ -1,15 +1,13 @@
 import React, {Fragment} from 'react';
 
 
-const ProductList = ({products, addCart}) => {
+const ProductList = ({product, addCart}) => {
 
     return(
-        <React.Fragment>
-            {
-                (products && products.length) ? (
-                    
-                    products.map((product) => (
-                        <div key={product._id} className="product__item">
+        <Fragment>
+                    {
+                        product && (
+                            <div key={product._id} className="product__item">
                             <img src={product.image} className="product__image"/>
                             <div className="product__content">
                                 <h3 className="product__title">{product.title}</h3>
@@ -18,10 +16,15 @@ const ProductList = ({products, addCart}) => {
                                 <button type="button" className="product__btn" onClick={() => addCart()}>Add cart</button>
                             </div>
                         </div>
-                    ))
-                ): 'Comic book has not been found...'
-            }
-        </React.Fragment>
+                        )
+                    }
+                    {
+                        !product && (
+                            'No comic books'
+                        )
+                    }
+
+        </Fragment>
     )
 };
 

@@ -16,6 +16,7 @@ console.log(`Database is name ${DATABASE_NAME}`);
 /* Routes */
 const userRouter = require('./routes/user');
 const productRouter = require('./routes/product');
+const cartRouter = require('./routes/cart');
 
 /* Middlewares */
 const app = express();
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', userRouter);
 app.use('/product', productRouter);
+app.use('/cart', cartRouter);
 
 app.listen(PORT || 8181, () => {
     console.log(`Server started on port ${PORT || 8181}`);

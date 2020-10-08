@@ -5,9 +5,7 @@ import ProductList from '../../components/product-list';
 class ProductViewer extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            product: []
-         }
+        this.state = { }
     }
 
     async componentDidMount() {
@@ -35,7 +33,9 @@ class ProductViewer extends Component {
 
         return ( 
             <React.Fragment>
-                <ProductList products={product} addCart={this.addCart} />
+
+                   <ProductList product={product} addCart={this.addCart} />
+
             </React.Fragment>
          );
     }

@@ -28,7 +28,7 @@ module.exports.getProductById = function (req, res) {
     if (productId) {
         Product.findById(productId, (err, product) => {
             if (err) {
-                res.status(404).json({
+                return res.status(404).json({
                     message: 'Product has not been found'
                 })
             } else {
@@ -106,7 +106,7 @@ module.exports.deleteProduct = function (req, res) {
     const productId = req.params.productId;
 
     if (productId) {
-        Product.findOneAndDelete(productId, (err, product) => {
+        Product.findByIdAndDelete(productId, (err) => {
             if (err) {
                 res.status(404).json({
                     message: 'Product has not been found'
