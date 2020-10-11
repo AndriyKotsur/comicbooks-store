@@ -1,10 +1,11 @@
 import React, {Fragment} from 'react';
+import './products-list.css';
 
 const ProductsList = ({products, showInfo}) => {
 
     return(
         <Fragment>
-            <div className="product__inner">
+            <div className="products__inner">
                 {
                     (products && products.length) ? (
                         

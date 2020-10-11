@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import ProductList from '../../components/products-list';
+import SearchList from '../../components/search-list';
 import axios from 'axios';
 import './products-viewer.css';
 
@@ -8,7 +9,7 @@ class ProductsViewer extends Component {
         super(props);
         this.state = { 
             products: []
-         }
+        }
     }
 
     async componentDidMount() {
@@ -24,7 +25,6 @@ class ProductsViewer extends Component {
     };
 
     showInfo = (productId) => {
-        
         this.props.history.push(`/product/${productId}`)
     };
 
@@ -33,9 +33,10 @@ class ProductsViewer extends Component {
         console.log(products);
         
         return ( 
-            <React.Fragment>
+            <Fragment>
+                <SearchList />
                 <ProductList products={products} showInfo={this.showInfo} />
-            </React.Fragment>
+            </Fragment>
          );
     }
 };

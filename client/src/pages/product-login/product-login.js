@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
+import './product-login.css'
 
 class ProductLogin extends Component {
     constructor(props) {
@@ -28,31 +29,32 @@ class ProductLogin extends Component {
         };
 
         try {
-            const response = await axios.post(`http://localhost:5000/login`, user);
+            const response = await axios.post(`http://localhost:5000/user/sign-in`, user);
             this.props.setUser(response.data.token);
             this.props.history.push('/');
 
         } catch (err) {
-            throw err;
+            throw err
         }
     }
+
     render() { 
         return ( 
-            <React.Fragment>
-                <div className="transport-login-wrapper">
-                    <form onSubmit={this.onSubmit} className="product__login">
-                        <div>
-                            <span>Email:</span>
+            <Fragment>
+                <div className="product__login">
+                    <form onSubmit={this.onSubmit} className="form">
+                        <div className="form-group">
+                            <label className="form-label">Email</label>
                             <input type="email" name="email" onChange={this.onChange} className="form-input" required/>
                         </div>
-                        <div>
-                            <span>Password:</span>
+                        <div className="form-group">
+                            <label className="form-label">Password</label>
                             <input type="password" name="password" minLength="1" maxLength="15" onChange={this.onChange} className="form-input" required/>
                         </div>
                         <input type="submit" value="Submit" className="form-submit"/>
                     </form>
                 </div>
-            </React.Fragment>
+            </Fragment>
          );
     }
 }

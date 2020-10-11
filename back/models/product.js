@@ -22,6 +22,10 @@ const productSchema = new mongoose.Schema({
     image: {
         type: String,
         required: [true, 'Image is required']
+    },
+    user: {
+        type: String,
+        required: [false, 'User is optional']
     }
 }, {
     timestamps: true

@@ -24,8 +24,14 @@ const userSchema = new mongoose.Schema({
     timestamps: true
 });
 
-userSchema.virtual('products', {
+userSchema.virtual('carts', {
     ref: 'Cart',
+    localField: '_id',
+    foreignField: 'user'
+});
+
+userSchema.virtual('products', {
+    ref: 'Product',
     localField: '_id',
     foreignField: 'user'
 });

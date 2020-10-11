@@ -30,7 +30,7 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', userRouter);
+app.use('/user', userRouter);
 app.use('/product', productRouter);
 app.use('/cart', cartRouter);
 

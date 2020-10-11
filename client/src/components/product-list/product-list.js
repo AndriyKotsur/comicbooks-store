@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 
 
-const ProductList = ({product, addCart}) => {
+const ProductList = ({product, addCart, isAuthorized}) => {
 
     return(
         <Fragment>
@@ -13,7 +13,14 @@ const ProductList = ({product, addCart}) => {
                                 <h3 className="product__title">{product.title}</h3>
                                 <span className="product__price">{product.price} $</span>
                                 <p className="product__description">{product.description}</p>
-                                <button type="button" className="product__btn" onClick={() => addCart()}>Add cart</button>
+                                {
+                                    !isAuthorized ?
+                                        <span>You should log in to add comic book to the cart</span>
+                                    :
+                                    <>
+                                        <button type="button" className="product__btn" onClick={() => addCart()}>Add cart</button>
+                                    </>
+                                }
                             </div>
                         </div>
                         )

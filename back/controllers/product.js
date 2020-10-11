@@ -6,6 +6,10 @@ const {
     model
 } = require('../models/product');
 const Product = require('../models/product');
+const {
+    prepareToken,
+    parseBearer
+} = require('../middleware/token');
 
 
 module.exports.getProducts = function (req, res) {
@@ -100,6 +104,31 @@ module.exports.editProduct = function (req, res) {
             message: 'Bad request'
         })
     }
+};
+
+module.exports.searchProduct = function (req, res) {
+    const filter = {};
+    let temp = [];
+    let searchKey = req.query.search.toLowerCase();
+    console.log(req.query);
+
+    Product.find(filter)
+        .exec((err, products) => {
+            console.log(products);
+            for (let i = 0; i < products.length; i++) {
+                if(((products[i].title).toLowerCase()).includes(searchKey)) {
+                    temp.push(products[i])
+                }
+            }
+
+            if(err) {
+                return res.status(404).json({
+                    message: 'Product has not been found'
+                })
+            }
+
+            res.status(200).json(temp)
+        })
 };
 
 module.exports.deleteProduct = function (req, res) {

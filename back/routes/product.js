@@ -11,6 +11,7 @@ router.get('/', productController.getProducts);
 router.get('/:productId', urlencodedParser, productController.getProductById);
 router.get('/', urlencodedParser, productController.getProducts);
 router.post('/add', upload.uploadImage, urlencodedParser, productController.addProduct);
+router.post('/search', urlencodedParser, productController.searchProduct);
 router.put('/edit', urlencodedParser, productController.editProduct);
 router.delete('/:productId', productController.deleteProduct);
 

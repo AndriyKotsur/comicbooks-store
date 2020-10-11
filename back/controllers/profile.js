@@ -1,8 +1,8 @@
-const Cart = require('../models/cart');
 const User = require('../models/user');
 const Product = require('../models/product');
+const { decode } = require('jsonwebtoken');
 
-module.exports.getCartProducts = function (req, res) {
+module.exports.getProfileProducts = function (req, res) {
     const userId = req.params.userId;
 
     if (userId) {
@@ -12,9 +12,9 @@ module.exports.getCartProducts = function (req, res) {
                     message: 'User has not been found'
                 })
             } else {
-                await user.populate('carts').execPopulate()
+                await user.populate('products').execPopulate()
                 res.status(200).json(
-                    user.carts
+                    user.products
                 )
             }
         })
@@ -25,7 +25,7 @@ module.exports.getCartProducts = function (req, res) {
     }
 };
 
-module.exports.addCartProduct = function (req, res) {
+module.exports.addProfileProduct = function (req, res) {
     const productId = req.params.productId;
 
     if(!req.params || !req.body) {
@@ -42,7 +42,7 @@ module.exports.addCartProduct = function (req, res) {
         } else {
             console.log(req.body);
 
-            const newCartProduct = new Cart({
+            const newCartProduct = new Product({
                 title: product.title,
                 price: product.price,
                 description: product.description,

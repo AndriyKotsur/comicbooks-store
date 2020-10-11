@@ -6,8 +6,9 @@ const urlencodedParser = bodyParser.urlencoded({
     extended: false
 });
 
+router.get('/', userController.getUser);
 router.post('/sign-up', urlencodedParser, userController.signUpUser);
-router.post('/login', urlencodedParser, userController.loginUser);
+router.post('/sign-in', urlencodedParser, userController.loginUser);
 router.delete('/:id', urlencodedParser, userController.deleteUser);
 
 module.exports = router;
