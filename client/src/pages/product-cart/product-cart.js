@@ -21,7 +21,7 @@ class ProductCart extends Component {
                 userId: user.data.id
             })
         } catch (err) {
-            throw err;
+            this.props.unSetUser()
         }
     }
 

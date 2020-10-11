@@ -1,6 +1,9 @@
 const User = require('../models/user');
 const Product = require('../models/product');
-const { decode } = require('jsonwebtoken');
+const {
+    prepareToken,
+    parseBearer
+} = require('../middleware/token');
 
 module.exports.getProfileProducts = function (req, res) {
     const userId = req.params.userId;
@@ -13,6 +16,7 @@ module.exports.getProfileProducts = function (req, res) {
                 })
             } else {
                 await user.populate('products').execPopulate()
+                console.log(user.products);
                 res.status(200).json(
                     user.products
                 )
@@ -25,51 +29,95 @@ module.exports.getProfileProducts = function (req, res) {
     }
 };
 
-module.exports.addProfileProduct = function (req, res) {
-    const productId = req.params.productId;
-
-    if(!req.params || !req.body) {
-        return res.status(400).json({
-            message: 'Data has not been provided'
-        })
-    }
-
-    Product.findById(productId, (err, product) => {
-        if(err) {
-            return res.status(404).json({
-                message: 'Product has not been found'
-            })
-        } else {
-            console.log(req.body);
-
-            const newCartProduct = new Product({
-                title: product.title,
-                price: product.price,
-                description: product.description,
-                image: product.image,
-                user: req.body.id
-            })
-
-            newCartProduct.save((err) => {
-                if(err) {
-                    return res.status(500).json({
-                        message: 'Internal error'
-                    })
-                } else {
-                    return res.status(201).json({
-                        message: 'The product has been added'
-                    })
-                }
-            })
-        }
-    })
-};
-
-module.exports.deleteCartProduct = function (req, res) {
+module.exports.getProfileProductById = function (req, res) {
     const productId = req.params.productId;
 
     if (productId) {
-        Cart.findByIdAndDelete(productId, (err) => {
+        Product.findById(productId, (err, product) => {
+            if (err) {
+                return res.status(404).json({
+                    message: 'Product has not been found'
+                })
+            } else {
+                res.status(200).json(
+                    product
+                )
+            }
+        })
+    } else {
+        res.status(400).json({
+            message: 'Bad request'
+        })
+    }
+};
+
+module.exports.addProfileProduct = function (req, res) {
+    const decoded = parseBearer(req.headers.authorization, req.headers);
+
+    const {
+        title,
+        price,
+        description
+    } = req.body;
+    const image = req.file.location;
+
+    if (!title || !price || !description || !image) {
+        return res.status(400).json({
+            message: "Please enter the required fields"
+        })
+    }
+    const newProduct = new Product({
+        title: title,
+        price: price,
+        description: description,
+        image: image,
+        user: decoded.id
+    })
+    newProduct.save((err) => {
+        if (err) {
+            return res.status(400).json({
+                message: 'Creating error'
+            })
+        }
+        res.status(200).json({
+            message: 'The product has been created'
+        })
+    })
+};
+
+module.exports.editProfileProduct = function (req, res) {
+    const productId = req.params.productId;
+    
+    if (productId) {
+        Product.findByIdAndUpdate(productId, {
+                title: req.body.title,
+                price: req.body.price,
+                description: req.body.description,
+                image: req.file.location
+            },
+            (err, product) => {
+                if (err) {
+                    res.status(404).json({
+                        message: 'Product has not been found'
+                    })
+                } else {
+                    res.status(200).json({
+                        message: 'Product has been changed'
+                    })
+                }
+            })
+    } else {
+        res.status(400).json({
+            message: 'Bad request'
+        })
+    }
+};
+
+module.exports.deleteProfileProduct = function (req, res) {
+    const productId = req.params.productId;
+
+    if (productId) {
+        Product.findByIdAndDelete(productId, (err) => {
             if (err) {
                 res.status(404).json({
                     message: 'Product has not been found'

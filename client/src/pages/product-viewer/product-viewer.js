@@ -3,6 +3,7 @@ import axios from 'axios';
 import ProductList from '../../components/product-list';
 import  { getUser, unSetUser } from '../../store/action-creators';
 import { connect } from 'react-redux';
+import './product-viewer.css';
 
 class ProductViewer extends Component {
     constructor(props) {

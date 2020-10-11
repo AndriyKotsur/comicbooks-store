@@ -1,0 +1,5 @@
+.product__inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,2 +1,4 @@
 import ProductProfile from './product-profile';
-export default ProductProfile;
+import { withRouter } from 'react-router-dom';
+
+export default withRouter(ProductProfile);

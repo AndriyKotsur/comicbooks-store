@@ -2,11 +2,13 @@ import React, { Component, Fragment } from 'react';
 import './profile-list.css';
 
 const ProfileList = ({products, editProduct, deleteProduct}) => {
+    console.log(products);
     return(
         <Fragment>
             <div className="profile__inner">
                 {
-                    (products && products.lenght) ? (
+                    (products && products.length) ? (
+
                         products.map((product) => (
                             <div key={product._id}>
                                 <div className="product__content">
@@ -25,4 +27,4 @@ const ProfileList = ({products, editProduct, deleteProduct}) => {
     )
 };
 
-export default ProfileList
+export default ProfileList;

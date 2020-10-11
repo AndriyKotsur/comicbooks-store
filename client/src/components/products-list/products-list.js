@@ -10,16 +10,16 @@ const ProductsList = ({products, showInfo}) => {
                     (products && products.length) ? (
                         
                         products.map((product) => (
-                            <div key={product._id} className="product__item">
-                                <div className="product__content">
-                                    <img src={product.image} className="product__image"/>
-                                    <h3 className="product__title">{product.title}</h3>
-                                    <span className="product__price">{product.price} $</span>
-                                    <button type="button" className="product__btn" onClick={() => showInfo(product._id)}>Show Details</button>
+                            <div key={product._id} className="products__item">
+                                <div className="products__content">
+                                    <img src={product.image} className="products__image"/>
+                                    <h3 className="products__title">{product.title}</h3>
+                                    <span className="products__price">{product.price} $</span>
+                                    <button type="button" className="products__btn" onClick={() => showInfo(product._id)}>Details</button>
                                 </div>
                             </div>
                         ))
-                    ): 'Loading'
+                    ): 'Loading...'
                 }
             </div>
         </Fragment>

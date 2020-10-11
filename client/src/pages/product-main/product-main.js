@@ -10,7 +10,8 @@ import ProductViewer from '../product-viewer';
 import ProductSearch from '../product-search';
 import ProductProfile from '../product-profile';
 import ProductCart from '../product-cart';
-import ProductAdd from '../product-add/product-add';
+import ProductAdd from '../product-add';
+import ProductEdit from '../product-edit';
 
 class Main extends Component {
     constructor(props) {
@@ -69,7 +70,8 @@ class Main extends Component {
                         <Route path='/product/:productId' exact component={ProductViewer} />
                         <Route path='/search' exact component={ProductSearch} />
                         <Route path='/profile' exact component={authRequired(ProductProfile)} />
-                        <Route path='/add' exact component={ProductAdd} />
+                        <Route path='/add' exact component={authRequired(ProductAdd)} />
+                        <Route path='/edit/:productId' exact component={authRequired(ProductEdit)} />
                         <Route path='/cart' exact component={authRequired(ProductCart)} />
                     </Switch>
                 </div>
