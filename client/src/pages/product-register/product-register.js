@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import './product-register.css';
 
 
@@ -59,6 +59,8 @@ class ProductRegister extends Component {
                             <input type="password" name="password" onChange={this.onChange} className="form-input" required/>
                         </div>
                         <input type="submit" value="Submit" className="form-submit"/>
+
+                        <p className="form-warning">Already registered?<Link to="/sign-in" className="form-link">Sign in</Link></p>
                     </form>
                 </div>
             </Fragment>

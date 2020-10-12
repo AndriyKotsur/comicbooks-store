@@ -1,0 +1,57 @@
+.profile__item {
+    width: calc(25% - 40px);
+    min-height: 550px;
+    display: flex;
+    justify-content: center;
+    margin: 0px 20px 40px;
+}
+
+.profile__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.profile__image {
+    width: 100%;
+    height: 400px;
+}
+
+.profile__image img {
+    width: 100%;
+    height: 100%;
+}
+
+.profile__title {
+    margin: 20px 0px 10px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.profile__price {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.profile__btn {
+    padding: 10px 35px;
+    margin-top: auto;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    border: 3px solid #000000;
+    border-radius: 4px;
+    text-transform: uppercase;
+    background: #000000;
+}
+
+.profile__btn:not(:last-child) {
+    margin-right: 20px;
+}
+
+.profile__btn:hover {
+    border: 3px solid #000000;
+    color: #000000;
+    background: #ffffff;
+}

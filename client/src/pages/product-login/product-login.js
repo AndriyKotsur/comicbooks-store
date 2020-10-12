@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './product-login.css'
 
 class ProductLogin extends Component {
@@ -53,6 +53,7 @@ class ProductLogin extends Component {
                         </div>
                         <input type="submit" value="Submit" className="form-submit"/>
                     </form>
+                    <p className="form-warning">Already have an account?<Link to="/sign-up" className="form-link">Sign up</Link></p>
                 </div>
             </Fragment>
          );

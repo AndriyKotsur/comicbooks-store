@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import './cart-list.css';
 
 const CartList = ({products, deleteProduct}) => {
     return(
@@ -7,16 +8,16 @@ const CartList = ({products, deleteProduct}) => {
                 {
                     (products && products.length) ? (
                         products.map((product) => (
-                            <div key={product._id}>
-                                <div className="product__content">
-                                    <img src={product.image} className="product__image"/>
-                                    <h3 className="product__title">{product.title}</h3>
-                                    <span className="product__price">{product.price} $</span>
-                                    <button type="button" className="product__btn" onClick={() => deleteProduct(product._id)}>Delete</button>
+                            <div key={product._id} className="cart__item">
+                                <img src={product.image} className="cart__image"/>
+                                <div className="cart__content">
+                                    <h3 className="cart__title">{product.title}</h3>
+                                    <span className="cart__price">{product.price} $</span>
+                                    <button type="button" className="cart__btn" onClick={() => deleteProduct(product._id)}>Delete</button>
                                 </div>
                             </div>
                         ))
-                    ): 'There is no comic books in the cart'
+                    ): <span className="cart__downloading text-warning">There is no comic books in the cart</span>
                 }
             </div>
         </Fragment>

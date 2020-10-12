@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import { Link } from 'react-router-dom';
 import './product-list.css';
 
 const ProductList = ({product, addCart, isAuthorized}) => {
@@ -16,7 +17,7 @@ const ProductList = ({product, addCart, isAuthorized}) => {
                             <p className="product__description">{product.description}</p>
                             {
                                 !isAuthorized ?
-                                    <span>Log in to add comic book to the cart</span>
+                                    <Link to="/sign-in" className="product__warning text-warning">Sign in to add comic book to the cart</Link>
                                 :
                                 <>
                                     <button type="button" className="product__btn" onClick={() => addCart()}>Add cart</button>
@@ -28,7 +29,7 @@ const ProductList = ({product, addCart, isAuthorized}) => {
                 }
                 {
                     !product && (
-                        'No comic books'
+                        <span className="product__loading text-warning">Loading...</span>
                     )
                 }
             </div>

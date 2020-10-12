@@ -3,6 +3,7 @@ import CartList from '../../components/cart-list';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { unSetUser } from '../../store/action-creators';
+import './product-cart.css';
 
 class ProductCart extends Component {
     constructor(props) {

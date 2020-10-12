@@ -19,7 +19,7 @@ const ProductsList = ({products, showInfo}) => {
                                 </div>
                             </div>
                         ))
-                    ): 'Loading...'
+                    ):<span className="products__warning text-warning">Loading...</span>
                 }
             </div>
         </Fragment>

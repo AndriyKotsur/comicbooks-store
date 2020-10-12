@@ -1,6 +1,6 @@
 .products__item {
     width: calc(25% - 40px);
-    min-height: 525px;
+    min-height: 550px;
     display: flex;
     justify-content: center;
     margin: 0px 20px 40px;
@@ -13,7 +13,7 @@
 }
 .products__image {
     width: 100%;
-    height: 375px;
+    height: 400px;
 }
 
 .products__image img {
@@ -50,4 +50,11 @@
     border: 3px solid #000000;
     color: #000000;
     background: #ffffff;
+}
+
+.products__warning {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

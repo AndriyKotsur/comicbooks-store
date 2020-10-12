@@ -4,6 +4,7 @@ import ProfileList from '../../components/profile-list/profile-list';
 import axios from 'axios';
 import { connect } from 'react-redux'
 import { unSetUser } from '../../store/action-creators';
+import './product-profile.css';
 
 class ProductProfile extends Component {
     constructor(props) {

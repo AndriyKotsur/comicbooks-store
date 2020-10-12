@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+import './product-add.css';
 
 class ProductAdd extends Component {
     constructor(props) {
@@ -67,7 +68,7 @@ class ProductAdd extends Component {
                         </div>
                         <div className="form-group">
                             <label className="form-label">Description</label>
-                            <textarea onChange={this.onChange} name="description" className="form-input"></textarea>
+                            <textarea onChange={this.onChange} name="description" className="form-textarea"></textarea>
                         </div>
                         <div className="form-group">
                             <label className="form-label">Image</label>

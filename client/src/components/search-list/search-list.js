@@ -6,12 +6,13 @@ class SearchList extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
+        this.searchInput = React.createRef();
     }
 
     searchProduct = (e) => {
         e.preventDefault();
 
-        const searchKey = this.refs.search.value.trim();
+        const searchKey = this.searchInput.current.value.trim();
         console.log(searchKey);
 
         if(searchKey === '') {
@@ -25,12 +26,12 @@ class SearchList extends Component {
         return ( 
             <Fragment>
                 <div className="search__inner">
-                    <form onSubmit={this.searchProduct} className="form">
-                        <div className="form-group">
-                            <label className="form-label">Search</label>
-                            <input type="search" name="search" className="search" ref="search" className="form-input" />
+                    <form onSubmit={this.searchProduct} className="search__form">
+                        <div className="search__group">
+                            <label className="search__label">Search</label>
+                            <input type="search" name="search" className="search" ref={this.searchInput} className="search__input" />
                         </div>
-                            <input type="submit" value="Submit" className="form-submit" />
+                            <input type="submit" value="Submit" className="search__submit" />
                     </form>
                 </div>
             </Fragment>
