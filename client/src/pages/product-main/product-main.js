@@ -32,7 +32,7 @@ class Main extends Component {
                 <header className="header">
                     <div className="header__inner">
                         <Link to="/" className="header__logotype">
-                            <img src="http://localhost:3000/assets/comic-book.svg" alt="Comic book store logotype" />
+                            <img src="/assets/comic-book.svg" alt="Comic book store logotype" />
                         </Link>
                         {
                             !isAuthorized ? (
@@ -47,11 +47,11 @@ class Main extends Component {
                             ): 
                                 <nav className="header__action">
                                     <Link to="/profile" className="header__action-profile">
-                                        <img src="http://localhost:3000/assets/user.svg" alt="Comic book store logotype" />
+                                        <img src="/assets/user.svg" alt="Comic book store logotype" />
                                         Profile
                                     </Link>
                                     <Link to="" onClick={this.logOut} className="header__action-logout">
-                                        <img src="http://localhost:3000/assets/logout.svg" alt="Comic book store logotype" />
+                                        <img src="/assets/logout.svg" alt="Comic book store logotype" />
                                         Log Out
                                     </Link>
                                 </nav>

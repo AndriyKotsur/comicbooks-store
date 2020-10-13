@@ -18,7 +18,7 @@ class ProductEdit extends Component {
         const productId = this.props.match.params.productId;
 
         try {
-            const product = await axios.get(`http://localhost:5000/profile/product/${productId}`);
+            const product = await axios.get(`/profile/product/${productId}`);
             
             this.titleInput.current.value = product.data.title;
             this.priceInput.current.value = product.data.price;
@@ -54,7 +54,7 @@ class ProductEdit extends Component {
         try {
             const productId = this.props.match.params.productId;
             
-            await axios.put(`http://localhost:5000/profile/product/edit/${productId}`, formData, config);
+            await axios.put(`/profile/product/edit/${productId}`, formData, config);
             this.props.history.push('/profile');
 
         } catch (err) {

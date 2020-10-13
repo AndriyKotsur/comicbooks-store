@@ -29,7 +29,7 @@ class ProductLogin extends Component {
         };
 
         try {
-            const response = await axios.post(`http://localhost:5000/user/sign-in`, user);
+            const response = await axios.post(`/user/sign-in`, user);
             this.props.setUser(response.data.token);
             this.props.history.push('/');
 

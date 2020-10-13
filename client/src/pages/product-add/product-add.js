@@ -45,7 +45,7 @@ class ProductAdd extends Component {
         formData.append('image', this.state.file);
 
         try {
-            const response = await axios.post('http://localhost:5000/profile/product/add', formData, config);
+            const response = await axios.post('/profile/product/add', formData, config);
             this.props.history.push('/profile');
 
         } catch (err) {

@@ -16,7 +16,7 @@ class ProductProfile extends Component {
 
     tokenCheck = async () => {
         try {
-            const user = await axios.get('http://localhost:5000/user');
+            const user = await axios.get('/user');
             
             this.setState({
                 userId: user.data.id
@@ -31,7 +31,7 @@ class ProductProfile extends Component {
         try {
             await this.tokenCheck();
             const { userId } = this.state;
-            const profile = await axios.get(`http://localhost:5000/profile/${userId}`);
+            const profile = await axios.get(`/profile/${userId}`);
             console.log(profile);
 
             this.setState({
@@ -51,10 +51,10 @@ class ProductProfile extends Component {
     deleteProduct = async (productId) => {
         try {
             await this.tokenCheck();
-            await axios.delete(`http://localhost:5000/profile/${productId}`);
+            await axios.delete(`/profile/${productId}`);
             const { userId } = this.state;
 
-            const products = await axios.get(`http://localhost:5000/profile/${userId}`);
+            const products = await axios.get(`/profile/${userId}`);
 
             this.setState({
                 products: products.data

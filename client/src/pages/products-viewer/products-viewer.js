@@ -14,7 +14,7 @@ class ProductsViewer extends Component {
 
     async componentDidMount() {
         try {
-            const products = await axios.get('http://localhost:5000/product');
+            const products = await axios.get('/product');
 
             this.setState({
                 products: products.data

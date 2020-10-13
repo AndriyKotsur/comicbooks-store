@@ -12,7 +12,7 @@ class ProductSearch extends Component {
 
     async componentDidMount() {
         try {
-          const products = await axios.post(`http://localhost:5000/product/search${this.props.location.search}`)
+          const products = await axios.post(`/product/search${this.props.location.search}`)
           console.log(products);
           
           this.setState({

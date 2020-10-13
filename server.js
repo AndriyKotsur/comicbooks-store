@@ -36,6 +36,20 @@ app.use('/product', productRouter);
 app.use('/profile', profileRouter);
 app.use('/cart', cartRouter);
 
+if (process.env.NODE_ENV === 'prod' || process.env.NODE_ENV === 'stage') {
+    app.use(express.static(path.join(__dirname, 'client/build')));
+
+    app.get('*', function (req, res) {
+        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    });
+};
+
+app.get('*', (req, res) => {
+    res.status(200).json({
+        message: 'Bad request'
+    });
+});
+
 app.listen(PORT || 8181, () => {
     console.log(`Server started on port ${PORT || 8181}`);
 });

@@ -32,7 +32,7 @@ class ProductRegister extends Component {
         };
 
         try {
-            const response = await axios.post(`http://localhost:5000/user/sign-up`, newUser);
+            const response = await axios.post(`/user/sign-up`, newUser);
             this.props.setUser(response.data.token);
             this.props.history.push('/');
 

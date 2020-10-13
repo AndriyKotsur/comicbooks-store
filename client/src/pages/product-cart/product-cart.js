@@ -15,7 +15,7 @@ class ProductCart extends Component {
 
     tokenCheck = async () => {
         try {
-            const user = await axios.get('http://localhost:5000/user');
+            const user = await axios.get('/user');
             console.log(user);
 
             this.setState({
@@ -30,7 +30,7 @@ class ProductCart extends Component {
         try {
             await this.tokenCheck();
             const { userId } = this.state;
-            const cart = await axios.get(`http://localhost:5000/cart/${userId}`)
+            const cart = await axios.get(`/cart/${userId}`)
             console.log(cart);
 
             this.setState({
@@ -45,10 +45,10 @@ class ProductCart extends Component {
     deleteProduct = async (productId) => {
         try {
             await this.tokenCheck();
-            await axios.delete(`http://localhost:5000/cart/${productId}`);
+            await axios.delete(`/cart/${productId}`);
             const { userId } = this.state;
 
-            const cart = await axios.get(`http://localhost:5000/cart/${userId}`);
+            const cart = await axios.get(`/cart/${userId}`);
 
             this.setState({
                 products: cart.data
