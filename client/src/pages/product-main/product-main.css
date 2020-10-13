@@ -2,7 +2,13 @@
     max-width: 1440px;
     width: 100%;
     margin: 0px auto;
-    padding: 40px 20px;
+    padding: 40px 20px 20px;
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 40px 20px;
+    }
 }
 
 .header {
@@ -13,11 +19,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 20px 20px;
 }
 
 .header__logotype {
-    width: 80px;
-    height: 100px;
+    width: 100px;
+    height: 80px;
 }
 
 .header__logotype img {
@@ -35,9 +42,15 @@
     justify-content: center;
     align-items: flex-end;
     margin-right: 20px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
     color: #000000;
+}
+
+@media (min-width: 460px) {
+    .header__action-register {
+        font-size: 16px;
+    }
 }
 
 .header__action-register img {
@@ -47,9 +60,15 @@
 }
 
 .header__action-login {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
     color: #000000;
+}
+
+@media (min-width: 460px) {
+    .header__action-login {
+        font-size: 16px;
+    }
 }
 
 .header__action-profile {
@@ -57,9 +76,15 @@
     justify-content: center;
     align-items: flex-end;
     margin-right: 20px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
     color: #000000;
+}
+
+@media (min-width: 460px) {
+    .header__action-profile {
+        font-size: 16px;
+    }
 }
 
 .header__action-profile img {
@@ -72,10 +97,16 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    margin-right: 20px;
-    font-size: 16px;
+    margin-right: 0px;
+    font-size: 14px;
     font-weight: 400;
     color: #000000;
+}
+
+@media (min-width: 460px) {
+    .header__action-logout {
+        font-size: 16px;
+    }
 }
 
 .header__action-logout img {

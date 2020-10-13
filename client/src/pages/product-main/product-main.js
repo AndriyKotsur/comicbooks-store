@@ -30,34 +30,32 @@ class Main extends Component {
         return (
             <Fragment>
                 <header className="header">
-                    <div className="container">
-                        <div className="header__inner">
-                            <Link to="/" className="header__logotype">
-                                <img src="http://localhost:3000/assets/comic-book.svg" alt="Comic book store logotype" />
-                            </Link>
-                            {
-                                !isAuthorized ? (
-                                    <nav className="header__action">
-                                        <Link to="/sign-up" className="header__action-register">
-                                            Sign Up
-                                        </Link>
-                                        <Link to="/sign-in" className="header__action-login">
-                                            Sign In
-                                        </Link>
-                                    </nav>
-                                ): 
-                                    <nav className="header__action">
-                                        <Link to="/profile" className="header__action-profile">
-                                            <img src="http://localhost:3000/assets/user.svg" alt="Comic book store logotype" />
-                                            Profile
-                                        </Link>
-                                        <Link to="" onClick={this.logOut} className="header__action-logout">
-                                            <img src="http://localhost:3000/assets/logout.svg" alt="Comic book store logotype" />
-                                            Log Out
-                                        </Link>
-                                    </nav>
-                            }
-                        </div>
+                    <div className="header__inner">
+                        <Link to="/" className="header__logotype">
+                            <img src="http://localhost:3000/assets/comic-book.svg" alt="Comic book store logotype" />
+                        </Link>
+                        {
+                            !isAuthorized ? (
+                                <nav className="header__action">
+                                    <Link to="/sign-up" className="header__action-register">
+                                        Sign Up
+                                    </Link>
+                                    <Link to="/sign-in" className="header__action-login">
+                                        Sign In
+                                    </Link>
+                                </nav>
+                            ): 
+                                <nav className="header__action">
+                                    <Link to="/profile" className="header__action-profile">
+                                        <img src="http://localhost:3000/assets/user.svg" alt="Comic book store logotype" />
+                                        Profile
+                                    </Link>
+                                    <Link to="" onClick={this.logOut} className="header__action-logout">
+                                        <img src="http://localhost:3000/assets/logout.svg" alt="Comic book store logotype" />
+                                        Log Out
+                                    </Link>
+                                </nav>
+                        }
                     </div>
                 </header>
 

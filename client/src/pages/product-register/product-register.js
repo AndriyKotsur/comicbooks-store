@@ -37,7 +37,7 @@ class ProductRegister extends Component {
             this.props.history.push('/');
 
         } catch (err) {
-            throw err;
+            throw err
         }
     };  
 

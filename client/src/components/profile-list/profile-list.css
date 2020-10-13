@@ -1,9 +1,30 @@
 .profile__item {
-    width: calc(25% - 40px);
-    min-height: 550px;
+    width: calc(100% - 40px);
+    min-height: 400px;
     display: flex;
     justify-content: center;
     margin: 0px 20px 40px;
+}
+
+@media (min-width: 460px) {
+    .profile__item {
+        width: calc(50% - 40px);
+        min-height: 475px;
+    }
+}
+
+@media (min-width: 768px) {
+    .profile__item {
+        width: calc(33.333% - 40px);
+        min-height: 500px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .profile__item {
+        width: calc(25% - 40px);
+        min-height: 550px;
+    }
 }
 
 .profile__content {
@@ -24,21 +45,34 @@
 .profile__title {
     margin: 20px 0px 10px;
     text-align: center;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 700;
+}
+
+@media (min-width: 768px) {
+    .profile__title {
+        font-size: 24px;
+    }
 }
 
 .profile__price {
     margin-bottom: 10px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
 }
 
+@media (min-width: 768px) {
+    .profile__price {
+        font-size: 20px;
+    }
+}
+
 .profile__btn {
+    min-width: 120px;
     padding: 10px 35px;
     margin-top: auto;
     color: #ffffff;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 700;
     border: 3px solid #000000;
     border-radius: 4px;
@@ -54,4 +88,10 @@
     border: 3px solid #000000;
     color: #000000;
     background: #ffffff;
+}
+
+@media (min-width: 768px) {
+    .profile__btn {
+        font-size: 14px;
+    }
 }
