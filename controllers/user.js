@@ -13,7 +13,7 @@ module.exports.getUser = function (req, res) {
         })
     } catch (e) {
         res.status(500).json({
-            message: 'Token expired'
+            message: 'Token has been expired'
         })
     }
 };
@@ -31,7 +31,7 @@ module.exports.deleteUser = function (req, res) {
                 })
             }
             res.status(204).json({
-                message: 'User has not been deleted'
+                message: 'User has been successfully deleted'
             })
         })
     } else {
@@ -59,7 +59,7 @@ module.exports.signUpUser = function (req, res) {
         .then(user => {
             if (user) {
                 return res.status(400).json({
-                    message: 'User is already created'
+                    message: 'The email address you entered is already registered'
                 });
             }
 
@@ -83,13 +83,13 @@ module.exports.signUpUser = function (req, res) {
                             );
                             console.log(token);
                             return res.status(201).json({
-                                result: 'Signed up',
+                                result: 'User has been successfully authorized',
                                 token
                             });
                         })
                         .catch(() => {
                             return res.status(500).json({
-                                error: 'Signup error'
+                                message: 'Bad request'
                             });
                         })
                 })
@@ -115,14 +115,14 @@ module.exports.loginUser = function (req, res) {
         .then(user => {
             if (!user) {
                 return res.status(400).json({
-                    message: 'Incorrect email address'
+                    message: 'No user has beed found with such email and password'
                 })
             }
             bcrypt.compare(password, user.password)
                 .then(isMatch => {
                     if (!isMatch) {
                         return res.status(400).json({
-                            message: 'Incorrect email or password'
+                            message: 'No user has beed found with such email and password'
                         })
                     }
                     const token = prepareToken({
@@ -132,13 +132,13 @@ module.exports.loginUser = function (req, res) {
                         req.headers
                     );
                     res.json({
-                        result: 'User has been authorized',
+                        result: 'User has been successfully authorized',
                         token
                     });
                 })
                 .catch(() => {
                     res.status(401).json({
-                        message: 'Login error'
+                        message: 'Bad request'
                     })
                 })
         })

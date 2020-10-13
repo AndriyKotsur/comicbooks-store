@@ -17,9 +17,16 @@
 
 .header__inner {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 20px 20px;
+}
+
+@media (min-width: 460px) {
+    .header__inner {
+        flex-direction: row;
+    }
 }
 
 .header__logotype {
@@ -69,6 +76,28 @@
     .header__action-login {
         font-size: 16px;
     }
+}
+
+.header__action-cart {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-right: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000000;
+}
+
+@media (min-width: 460px) {
+    .header__action-cart {
+        font-size: 16px;
+    }
+}
+
+.header__action-cart img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
 }
 
 .header__action-profile {

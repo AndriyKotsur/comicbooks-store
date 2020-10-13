@@ -6,7 +6,8 @@ class ProductEdit extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            file: null
+            file: null,
+            isError: ''
         }
 
          this.titleInput = React.createRef();
@@ -25,7 +26,9 @@ class ProductEdit extends Component {
             this.descriptionInput.current.value = product.data.description;
             
         } catch (err) {
-            throw err
+            this.setState({
+                isError: err.response.data
+            })
         }
     }
 
@@ -58,11 +61,15 @@ class ProductEdit extends Component {
             this.props.history.push('/profile');
 
         } catch (err) {
-            throw err
+            this.setState({
+                isError: err.response.data
+            })
         }
     }
 
     render() {
+        const { isError } = this.state;
+
         return ( 
             <Fragment>
                 <div className="product__edit">
@@ -81,8 +88,13 @@ class ProductEdit extends Component {
                         </div>
                         <div className="form-group">
                             <label className="form-label">Image</label>
-                            <input onChange={this.onImageChange} type="file" name="image" className="form-input" />
+                            <input onChange={this.onImageChange} type="file" name="image" className="form-input" required />
                         </div>
+                        {
+                            isError && (
+                            <p className="form-error">{isError.message}</p>
+                            )
+                        }
                         <input type="submit" value="Submit" className="form-submit"/>
                     </form>
                 </div>

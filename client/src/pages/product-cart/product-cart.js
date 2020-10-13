@@ -16,7 +16,6 @@ class ProductCart extends Component {
     tokenCheck = async () => {
         try {
             const user = await axios.get('/user');
-            console.log(user);
 
             this.setState({
                 userId: user.data.id
@@ -31,7 +30,6 @@ class ProductCart extends Component {
             await this.tokenCheck();
             const { userId } = this.state;
             const cart = await axios.get(`/cart/${userId}`)
-            console.log(cart);
 
             this.setState({
                 products: cart.data
@@ -54,7 +52,7 @@ class ProductCart extends Component {
                 products: cart.data
             })
 
-            window.location = '/cart';
+            this.props.history.push('/cart')
 
         } catch (err) {
             throw err

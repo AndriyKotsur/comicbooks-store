@@ -39,12 +39,6 @@
     height: 350px;
 }
 
-@media (min-width: 768px) {
-    .products__image {
-        height: 350px;
-    }
-}
-
 @media (min-width: 1024px) {
     .products__image {
         height: 400px;

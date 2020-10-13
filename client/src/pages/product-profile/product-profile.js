@@ -32,7 +32,6 @@ class ProductProfile extends Component {
             await this.tokenCheck();
             const { userId } = this.state;
             const profile = await axios.get(`/profile/${userId}`);
-            console.log(profile);
 
             this.setState({
                 products: profile.data
@@ -68,7 +67,6 @@ class ProductProfile extends Component {
 
     render() { 
         const { products } = this.state;
-        console.log(products);
 
         return ( 
             <Fragment>

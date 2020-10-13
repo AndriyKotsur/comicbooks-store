@@ -10,7 +10,8 @@ class ProductRegister extends Component {
         this.state = { 
             name: '',
             email: '',
-            password: ''
+            password: '',
+            isError: ''
          }
     }
 
@@ -37,11 +38,15 @@ class ProductRegister extends Component {
             this.props.history.push('/');
 
         } catch (err) {
-            throw err
+            this.setState({
+                isError: err.response.data
+            })
         }
     };  
 
     render() { 
+        const { isError } = this.state;
+
         return ( 
             <Fragment>
                 <div className="product__register">
@@ -58,6 +63,11 @@ class ProductRegister extends Component {
                             <label className="form-label">Password</label>
                             <input type="password" name="password" onChange={this.onChange} className="form-input" required/>
                         </div>
+                        {
+                            isError && (
+                            <p className="form-error">{isError.message}</p>
+                            )
+                        }
                         <input type="submit" value="Submit" className="form-submit"/>
 
                         <p className="form-warning">Already registered?<Link to="/sign-in" className="form-link">Sign in</Link></p>

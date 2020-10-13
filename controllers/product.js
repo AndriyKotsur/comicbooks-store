@@ -18,7 +18,7 @@ module.exports.getProducts = function (req, res) {
         .exec((err, products) => {
             if (err) {
                 return res.status(404).json({
-                    message: 'Products not found'
+                    message: 'Products have not been found'
                 })
             } else {
                 res.status(200).json(products)
@@ -70,11 +70,11 @@ module.exports.addProduct = function (req, res) {
     newProduct.save((err) => {
         if (err) {
             return res.status(400).json({
-                message: 'Creating error'
+                message: 'Product has not been created'
             })
         }
         res.status(200).json({
-            message: 'The product has been created'
+            message: 'Product has been successfully created'
         })
     })
 };
@@ -95,7 +95,7 @@ module.exports.editProduct = function (req, res) {
                     })
                 } else {
                     res.status(200).json({
-                        message: 'Product has been changed'
+                        message: 'Product has been successfully changed'
                     })
                 }
             })
@@ -142,7 +142,7 @@ module.exports.deleteProduct = function (req, res) {
                 })
             } else {
                 res.status(204).json({
-                    message: 'Product has been deleted'
+                    message: 'Product has been successfully deleted'
                 })
             }
         })

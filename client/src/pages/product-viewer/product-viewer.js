@@ -17,7 +17,6 @@ class ProductViewer extends Component {
         try {
             const productId = this.props.match.params.productId;
             const product = await axios.get(`/product/${productId}`);
-            console.log(product);
             
             this.setState({
                 product: product.data
@@ -30,7 +29,6 @@ class ProductViewer extends Component {
     tokenCheck = async () => {
         try {
             const user = await axios.get('/user');
-            console.log(user);
 
             this.setState({
                 userId: user.data

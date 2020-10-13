@@ -46,12 +46,16 @@ class Main extends Component {
                                 </nav>
                             ): 
                                 <nav className="header__action">
+                                    <Link to="/cart" className="header__action-cart">
+                                        <img src="/assets/cart.svg" alt="Comic book store cart" />
+                                        Cart
+                                    </Link>
                                     <Link to="/profile" className="header__action-profile">
-                                        <img src="/assets/user.svg" alt="Comic book store logotype" />
+                                        <img src="/assets/user.svg" alt="Comic book store profile" />
                                         Profile
                                     </Link>
                                     <Link to="" onClick={this.logOut} className="header__action-logout">
-                                        <img src="/assets/logout.svg" alt="Comic book store logotype" />
+                                        <img src="/assets/logout.svg" alt="Comic book store logout" />
                                         Log Out
                                     </Link>
                                 </nav>

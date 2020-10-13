@@ -12,7 +12,7 @@ module.exports.getProfileProducts = function (req, res) {
         User.findById(userId, async (err, user) => {
             if (err) {
                 return res.status(404).json({
-                    message: 'User has not been found'
+                    message: 'Products have not been found'
                 })
             } else {
                 await user.populate('products').execPopulate()
@@ -74,15 +74,14 @@ module.exports.addProfileProduct = function (req, res) {
         image: image,
         user: decoded.id
     })
-    
     newProduct.save((err) => {
         if (err) {
             return res.status(400).json({
-                err
+                message: 'Product has not been created'
             })
         }
         res.status(200).json({
-            message: 'The product has been created'
+            message: 'Product has been successfully created'
         })
     })
 };
@@ -100,11 +99,11 @@ module.exports.editProfileProduct = function (req, res) {
             (err, product) => {
                 if (err) {
                     res.status(404).json({
-                        err
+                        message: 'Product has not been found'
                     })
                 } else {
                     res.status(200).json({
-                        message: 'Product has been changed'
+                        message: 'Product has been successfully changed'
                     })
                 }
             })
@@ -126,7 +125,7 @@ module.exports.deleteProfileProduct = function (req, res) {
                 })
             } else {
                 res.status(204).json({
-                    message: 'Product has been deleted'
+                    message: 'Product has been successfully deleted'
                 })
             }
         })

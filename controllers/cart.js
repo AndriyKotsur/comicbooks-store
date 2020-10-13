@@ -30,7 +30,7 @@ module.exports.addCartProduct = function (req, res) {
 
     if(!req.params || !req.body) {
         return res.status(400).json({
-            message: 'Data has not been provided'
+            message: 'Please enter the required fields'
         })
     }
 
@@ -53,11 +53,11 @@ module.exports.addCartProduct = function (req, res) {
             newCartProduct.save((err) => {
                 if(err) {
                     return res.status(500).json({
-                        message: 'Internal error'
+                        message: 'Product has not been created'
                     })
                 } else {
                     return res.status(201).json({
-                        message: 'The product has been added'
+                        message: 'Product has been successfully created'
                     })
                 }
             })
@@ -76,7 +76,7 @@ module.exports.deleteCartProduct = function (req, res) {
                 })
             } else {
                 res.status(204).json({
-                    message: 'Product has been deleted'
+                    message: 'Product has been successfully deleted'
                 })
             }
         })

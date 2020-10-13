@@ -9,7 +9,8 @@ class ProductAdd extends Component {
             title: '',
             price: null,
             description: '',
-            file: null
+            file: null,
+            isError: ''
          }
 
         this.onChange.bind(this);
@@ -49,11 +50,15 @@ class ProductAdd extends Component {
             this.props.history.push('/profile');
 
         } catch (err) {
-            throw err
+            this.setState({
+                isError: err.response.data
+            })
         }
     }
     
     render() { 
+        const { isError } = this.state;
+        
         return ( 
             <Fragment>
                 <div className="product__add">
@@ -74,6 +79,11 @@ class ProductAdd extends Component {
                             <label className="form-label">Image</label>
                             <input onChange={this.onImageChange} type="file" name="image" className="form-input" />
                         </div>
+                        {
+                            isError && (
+                            <p className="form-error">{isError.message}</p>
+                            )
+                        }
                         <input type="submit" value="Submit" className="form-submit"/>
                     </form>
                 </div>

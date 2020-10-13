@@ -8,7 +8,8 @@ class ProductLogin extends Component {
         super(props);
         this.state = { 
             email: '',
-            password: ''
+            password: '',
+            isError: ''
          }
     }
 
@@ -22,7 +23,7 @@ class ProductLogin extends Component {
         
         e.preventDefault();
 
-        const {email, password} = this.state;
+        const {email, password, isError} = this.state;
         const user = {
             'email': email,
             'password': password
@@ -32,13 +33,17 @@ class ProductLogin extends Component {
             const response = await axios.post(`/user/sign-in`, user);
             this.props.setUser(response.data.token);
             this.props.history.push('/');
-
+            
         } catch (err) {
-            throw err
+            this.setState({
+                isError: err.response.data
+            })
         }
     }
 
-    render() { 
+    render() {
+        const { isError } = this.state;
+
         return ( 
             <Fragment>
                 <div className="product__login">
@@ -53,6 +58,11 @@ class ProductLogin extends Component {
                         </div>
                         <input type="submit" value="Submit" className="form-submit"/>
                     </form>
+                    {
+                        isError && (
+                        <p className="form-error">{isError.message}</p>
+                        )
+                    }
                     <p className="form-warning">Already have an account?<Link to="/sign-up" className="form-link">Sign up</Link></p>
                 </div>
             </Fragment>

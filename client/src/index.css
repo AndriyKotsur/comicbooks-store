@@ -197,6 +197,21 @@ h6 {
   }
 }
 
+.form-error {
+  margin: 20px 0px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #E63946;
+  line-height: normal;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .form-error {
+    font-size: 16px;
+  }
+}
+
 .form-link {
   margin-left: 5px;
   font-size: 14px;

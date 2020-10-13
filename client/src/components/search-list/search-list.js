@@ -13,7 +13,6 @@ class SearchList extends Component {
         e.preventDefault();
 
         const searchKey = this.searchInput.current.value.trim();
-        console.log(searchKey);
 
         if(searchKey === '') {
             return false

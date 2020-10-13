@@ -30,7 +30,6 @@ class ProductsViewer extends Component {
 
     render() { 
         const {products} = this.state;
-        console.log(products);
         
         return ( 
             <Fragment>

@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import './profile-list.css';
 
 const ProfileList = ({products, editProduct, deleteProduct}) => {
-    console.log(products);
+
     return(
         <Fragment>
             <div className="profile__inner">
