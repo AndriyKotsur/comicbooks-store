@@ -59,6 +59,7 @@ module.exports.addProfileProduct = function (req, res) {
         price,
         description
     } = req.body;
+    
     const image = req.file.location;
 
     if (!title || !price || !description || !image) {
@@ -73,10 +74,11 @@ module.exports.addProfileProduct = function (req, res) {
         image: image,
         user: decoded.id
     })
+    
     newProduct.save((err) => {
         if (err) {
             return res.status(400).json({
-                message: 'Creating error'
+                err
             })
         }
         res.status(200).json({
@@ -98,7 +100,7 @@ module.exports.editProfileProduct = function (req, res) {
             (err, product) => {
                 if (err) {
                     res.status(404).json({
-                        message: 'Product has not been found'
+                        err
                     })
                 } else {
                     res.status(200).json({

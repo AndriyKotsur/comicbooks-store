@@ -54,7 +54,7 @@ class ProductCart extends Component {
                 products: cart.data
             })
 
-            this.props.history.push('/cart')
+            window.location = '/cart';
 
         } catch (err) {
             throw err

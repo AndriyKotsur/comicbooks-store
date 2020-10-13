@@ -25,7 +25,7 @@ const cartScheme = new mongoose.Schema({
     },
     user: {
         type: String,
-        required: [true, 'Yser is required']
+        required: [false, 'User is optional']
     }
 }, {
     timestamps: true
